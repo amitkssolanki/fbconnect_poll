@@ -1,0 +1,28 @@
+<p>
+  <b>Question:</b>
+  <%=h @poll.question %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= fb_name(@poll.user.fb_userid, :useyou => false) %>
+</p>
+
+<% unless current_user.voted_polls.include?(@poll) %>
+<p>
+  <b>Vote:</b>
+  <%= link_to 'Vote Up', vote_poll_path(@poll, :status => 1), :method => :post %>
+  <%= link_to 'Vote Down', vote_poll_path(@poll, :status => 0), :method => :post %>
+</p>
+<% end %>
+
+<p>
+	<b>Current Results</b><br />
+	Up Votes: <%= @poll.votes.positive.size %><br />
+	Down Votes: <%= @poll.votes.negative.size %>
+</p>
+
+<% if current_user == @poll.user %>
+<%= link_to 'Edit', edit_poll_path(@poll) %> |
+<% end %>
+<%= link_to 'Back', polls_path %>

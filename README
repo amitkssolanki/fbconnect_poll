@@ -1,0 +1,8 @@
+== Integrating Facebook Connect with Ruby On Rails ==
+
+This application is a supplementary for the blog post at http://amitsolanki.com/
+
+Change config/facebooker.yml
+* Replace API_KEY with your application API key
+* Replace SECRET_KEY with your application Secret key
+* Replace CANVAS_PAGE_NAME with your application Canvas page name

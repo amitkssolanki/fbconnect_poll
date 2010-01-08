@@ -1,0 +1,24 @@
+<h1>Listing polls</h1>
+
+<table>
+  <tr>
+    <th>Question</th>
+    <th>User</th>
+  </tr>
+
+<% @polls.each do |poll| %>
+  <tr>
+    <td><%=h poll.question %></td>
+    <td><%= fb_name(poll.user.fb_userid, :useyou => false) %></td>
+    <td><%= link_to 'Show', poll %></td>
+		<% if current_user == poll.user %>
+    <td><%= link_to 'Edit', edit_poll_path(poll) %></td>
+    <td><%= link_to 'Destroy', poll, :confirm => 'Are you sure?', :method => :delete %></td>
+		<% end %>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New poll', new_poll_path %>
